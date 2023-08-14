@@ -1,25 +1,32 @@
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path "list_#{@list.id}.jpg" %>)">
   <h1><%= @list.name %></h1>
 </div>
 
+<div class="container">
+  <div class="row mb-8 mt-4">
+    <div class="col-md-8"></div>
+    <div class="col-md-4 btn-group" role="group">
+      <%= link_to 'Add Bookmark', new_list_bookmark_path(@list),  class: "btn btn-primary" %>
+      <%= link_to 'Back to Lists', lists_path, class: "btn btn-secondary" %>
+  </div>
 
+  <div class="row mb-8 mt-4">
+    <div class="cards">
 
+      <% @list.bookmarks.each do |bookmark| %>
+        <div class="card-trip">
+          <img src="<%= bookmark.movie.poster_url %>" />
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= bookmark.movie.title %> - <%= bookmark.movie.rating %></h2>
+              <p><%= bookmark.movie.overview %></p>
+              <p><strong><%= bookmark.comment %></strong><p>
+            </div>
+            <h2 class="card-trip-pricing"></h2>
+            <%= link_to 'Delete', list_bookmark_path(bookmark), data: {turbo_method: :delete, confirm: "Are you sure?"}, class: "link-warning" %>
+          </div>
+        </div>
+      <% end %>
 
-
-
-
-<ul>
-  <% @list.bookmarks.each do |bookmark| %>
-    <li>
-      <strong><%= bookmark.movie.title %></strong> :
-      <%= bookmark.comment %>
-    </li>
-  <% end %>
-</ul>
-
-
-
-
-
-<%= link_to 'Add Bookmark', new_list_bookmark_path(@list),  class: "btn btn-primary" %>
-<%= link_to 'Back to Lists', lists_path, class: "btn btn-primary" %>
+    </div>
+</div>
