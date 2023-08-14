@@ -1,7 +1,22 @@
-<h1>Lists index</h1>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+  <h1>Lists index</h1>
+</div>
+
 
 <ul>
   <% @lists.each do |list| %>
-    <li><%= list.name %></li>
+    <div class="card-product">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <div class="card-product-infos">
+        <li><%= link_to list.name, list_path(list) %></li>
+      </div>
+    </div>
   <% end %>
 </ul>
+
+
+
+
+
+
+<%= link_to 'New List', new_list_path, class: "btn btn-primary" %>
