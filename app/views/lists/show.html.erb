@@ -6,7 +6,7 @@
   <div class="row mb-8 mt-4">
     <div class="col-md-8"></div>
     <div class="col-md-4 btn-group" role="group">
-      <%= link_to 'Add Bookmark', new_list_bookmark_path(@list),  class: "btn btn-primary" %>
+      <%= link_to 'Add Bookmark', new_list_bookmark_path(@list, @bookmark),  class: "btn btn-primary" %>
       <%= link_to 'Back to Lists', lists_path, class: "btn btn-secondary" %>
   </div>
 
@@ -23,7 +23,7 @@
               <p><strong><%= bookmark.comment %></strong><p>
             </div>
             <h2 class="card-trip-pricing"></h2>
-            <%= link_to 'Delete', list_bookmark_path(bookmark), data: {turbo_method: :delete, confirm: "Are you sure?"}, class: "link-warning" %>
+            <%= link_to 'Delete', bookmark_path(bookmark), data: {turbo_method: :delete, confirm: "Are you sure?"}, class: "link-warning" %>
           </div>
         </div>
       <% end %>
