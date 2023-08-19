@@ -13,15 +13,15 @@
     </div>
   </div>
 
-
-
-  <div class="cards">
+<div class="cards">
     <% @lists.each do |list| %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path "list_#{list.id}.jpg" %>)">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+        url('<%= list.photo.present? ? cl_image_path(list.photo.key, width: 100, height: 150, crop: "fill") : asset_path("list_2.jpg") %>')">
             <%= link_to list.name, list_path(list), class: "link-light" %>
         </div>
     <% end %>
-  </div>
-
+</div>
 
 </div>
+
+<!-- <%= cl_image_tag("list_1_tdbogs", :width=>100, :height=>150, :crop=>"fill")  %> -->
